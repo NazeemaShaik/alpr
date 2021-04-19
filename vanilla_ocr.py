@@ -4,12 +4,18 @@ import easyocr
 import keras_ocr
 import utils
 
+
+# Argument Parsing
+# --image /path/to/image
 parser = argparse.ArgumentParser()
 parser.add_argument('--image', help="path to image")
 args = parser.parse_args()
 image_path = args.image
 
 
+# Plate Detection
+# Save as [cropped_image.jpg]
+print("Detecting Plate...")
 CONFIDENCE_THRESHOLD = 0.2
 NMS_THRESHOLD = 0.4
 
@@ -31,8 +37,7 @@ for idx, (classid, score, box) in enumerate(zip(classes, scores, boxes)):
 
 
 
-
-# Without Skewness outputs
+# With Skewness outputs
 easyreader = easyocr.Reader(['en'])
 easyresult = easyreader.readtext("cropped_image.jpg")
 easywiskew = [] 

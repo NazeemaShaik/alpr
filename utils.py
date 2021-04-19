@@ -105,3 +105,20 @@ def save_kerasocr_text(text_wi_skew, text_no_skew):
 
     with open('result/kerasocr.json', 'w') as handle:
         json.dump(json_string, handle, indent=4)
+
+
+def read_result_file(path_type):
+    if path_type == "tesseract":
+        with open("result/tesseract.json") as handle:
+            output = json.loads(handle.read())
+        return output
+
+    if path_type == "easyocr":
+        with open("result/easyocr.json") as handle:
+            output = json.loads(handle.read())
+        return output
+
+    if path_type == "kerasocr":
+        with open("result/kerasocr.json") as handle:
+            output = json.loads(handle.read())
+        return output
