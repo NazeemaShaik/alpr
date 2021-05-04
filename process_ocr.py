@@ -98,13 +98,14 @@ for line in lines:
 
     dilation = cv2.bitwise_not(dilation)
 
-    config = '-c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ --psm 13 --oem 1'
-    text = pytesseract.image_to_string(dilation, config=config)
+    config = '-c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ --psm 13 --oem 1 --tessdata-dir /usr/share/tesseract-ocr/4.00/tessdata'
+    text = pytesseract.image_to_string(dilation, lang='foo', config=config)
     text = utils.remove_alnum(text)
     tesseract_text += text
     print(text)
 
 utils.save_tesseract_text(tesseract_text)
+print(tesseract_text)
 
 
 utils.clean()
