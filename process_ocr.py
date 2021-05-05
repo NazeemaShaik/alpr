@@ -1,5 +1,4 @@
 import glob
-import matplotlib.pyplot as plt
 import cv2
 import pytesseract
 import argparse
@@ -98,7 +97,7 @@ for line in lines:
 
     dilation = cv2.bitwise_not(dilation)
 
-    config = '-c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ --psm 13 --oem 1 --tessdata-dir /usr/share/tesseract-ocr/4.00/tessdata'
+    config = '-c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ --psm 13 --oem 1 --tessdata-dir ./tessdata'
     text = pytesseract.image_to_string(dilation, lang='foo', config=config)
     text = utils.remove_alnum(text)
     tesseract_text += text
