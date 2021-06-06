@@ -52,7 +52,7 @@ cv2.imwrite("rotated_image.jpg", rotated)
 print("Detecting Lines...")
 image_path = "rotated_image.jpg"
 
-net = cv2.dnn.readNet("yolo_line.weights", "yolo_line.cfg")
+net = cv2.dnn.readNet("yolo_line_2.weights", "yolo_line.cfg")
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA_FP16)
 
